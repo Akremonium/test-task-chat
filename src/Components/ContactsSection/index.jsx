@@ -1,0 +1,1 @@
+export { defaulty } from './ContactsSection'
