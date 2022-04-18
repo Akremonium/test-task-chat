@@ -1,7 +1,8 @@
 import Filter from '../Filter'
 import ContactsList from '../ContactsList'
 
-const ContactsSection = (contacts, filter, findContact, chooseContact) => {
+const ContactsSection = ({contacts, filter, findContact, chooseContact}
+) => {
     return (
         <>
             <Filter filter={filter} onChange={findContact}/>

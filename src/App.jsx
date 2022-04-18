@@ -1,15 +1,21 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css';
+import useLocalStorage from "./Hooks/useLocalStorageHook";
 
 import User from './Components/User'
 import ContactsSection from './Components/ContactsSection'
 import ChatSection from './Components/ChatSection'
 
-import contacts from './contacts.json'
+import contactsList from './contacts.json'
 
 function App() {
+  const [contacts, setContacts] = useLocalStorage("contacts", contactsList);
   const [selectedContact, setSelectedContact] = useState('')
   const [filter, setFilter] = useState('')
+
+  useEffect(() => {
+    // contacts[0].history.push(contact)
+  }, [])
 
   const onFilter = (event) => {
     setFilter(event.currentTarget.value)
@@ -32,11 +38,13 @@ function App() {
   }
 
   return (
-    <>
+    <div className="container">
       <User />
-      <ContactsSection contacts={filteredContacts} filter={filter} findContact={onFilter} chooseContact={chooseInterlocutor} />
-      <ChatSection contact={selectedContact} sendMessage={sendMessage}/>
-    </>
+      <ContactsSection contacts={filteredContacts()}
+        filter={filter} findContact={onFilter} chooseContact={chooseInterlocutor}
+         />
+      {/* <ChatSection contact={selectedContact} sendMessage={sendMessage}/> */}
+    </div>
   );
 }
 

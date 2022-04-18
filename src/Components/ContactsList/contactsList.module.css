@@ -1,0 +1,13 @@
+.contactsList {
+  list-style: none;
+  width: 300px;
+  height: 300px;
+  overflow: scroll;
+  border: 2px solid teal;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.icon {
+  width: 20px;
+}

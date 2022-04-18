@@ -1,1 +1,1 @@
-export { defaulty } from './ContactsSection'
+export { default } from './ContactsSection'
