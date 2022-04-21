@@ -10,12 +10,20 @@ import contactsList from './contacts.json'
 
 function App() {
   const [contacts, setContacts] = useLocalStorage("contacts", contactsList);
-  const [selectedContact, setSelectedContact] = useState('')
+  const [selectedContact, setSelectedContact] = useState({})
   const [filter, setFilter] = useState('')
 
+  const idxOfSelectedContact = contacts.indexOf(contacts.find((contact)=>contact.name === selectedContact.name))
+
   useEffect(() => {
-    // contacts[0].history.push(contact)
-  }, [])
+    // console.log(idxOfSelectedContact)
+    console.log(selectedContact)
+    let changedContacts = [...contacts]
+    changedContacts[idxOfSelectedContact] = selectedContact
+    // console.log(changedContacts)
+
+    setContacts(changedContacts)
+  }, [selectedContact])
 
   const onFilter = (event) => {
     setFilter(event.currentTarget.value)
