@@ -1,0 +1,22 @@
+.chatContainer {
+  list-style: none;
+  width: 300px;
+  height: 250px;
+  overflow: scroll;
+}
+
+.interlocutorIcon {
+  width: 50px;
+}
+
+.messageContainer {
+  display: flex;
+}
+
+.dateTimeContainer {
+  display: flex;
+}
+
+p {
+  margin: 0;
+}

@@ -1,8 +1,11 @@
-body {
+body,
+html {
   margin: 0;
 }
 
 .container {
-  padding: 50px;
-  background-color: navy;
+  /* padding: 25px; */
+  background-color: lightslategray;
+  display: flex;
+  height: 100vh;
 }
