@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     setMessageReciever(selectedContact)
-  }, [newMessage])
+  }, [selectedContact])
 
   useEffect(() => {
     if (messageReciever) {
@@ -31,7 +31,7 @@ function App() {
         setNewMessage('')
       }
     }
-  }, [newMessage])
+  }, [contacts, messageReciever, newMessage, setContacts])
 
   // useEffect(() => {
   //   if (newMessage) {

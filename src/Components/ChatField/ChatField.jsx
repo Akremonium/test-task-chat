@@ -3,9 +3,6 @@ import { nanoid } from 'nanoid'
 
 import styles from './chatField.module.css'
 
-import User from '../User'
-
-
 const ChatField = ({ interlocutor }) => {
     const bottomMessage = useRef(null)
 
