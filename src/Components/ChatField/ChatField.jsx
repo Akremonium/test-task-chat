@@ -1,6 +1,10 @@
 import { useEffect, useRef } from 'react'
+import { nanoid } from 'nanoid'
 
 import styles from './chatField.module.css'
+
+import User from '../User'
+
 
 const ChatField = ({ interlocutor }) => {
     const bottomMessage = useRef(null)
@@ -29,16 +33,16 @@ const ChatField = ({ interlocutor }) => {
                     hours = date.getHours() > 12 ? date.getHours() - 12 : (date.getHours() < 10 ? "0" + date.getHours() : date.getHours()),
                     minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(),
                     AM_PM = date.getHours() > 12 ? "PM" : "AM",
-                    time = hours + '.' + minutes + ' ' + AM_PM,
+                    time = hours + ':' + minutes + ' ' + AM_PM,
                 dateForChat = monthForChat + '/' + day + '/' + year.toString().slice(-2)
-                return (<li key={message.date} ref={bottomMessage}>
+                return (<li key={nanoid()} ref={bottomMessage} className={message.author === 'contact' ? styles.contactMessageContainer : styles.userMessageContainer}>
                             <div className={styles.messageContainer}>
-                                {message.author === 'contact' ? <img src={interlocutor.avatar} alt='Interlocutor Icon' className={styles.interlocutorIcon}/> : <p>User</p>}
-                                <p>{message.text}</p>
+                                {message.author === 'contact' && <img src={interlocutor.avatar} alt='Interlocutor Icon' className={styles.interlocutorIcon}/> }
+                                <p className={message.author === 'contact' ? styles.contactMessage : styles.userMessage}>{message.text}</p>
                             </div>
                             <div className={styles.dateTimeContainer}>
                                 <p>{dateForChat}</p>
-                                <p>{time}</p>
+                                <p className={styles.time}>{time}</p>
                             </div>
                         </li>)
             })}

@@ -11,24 +11,34 @@ function App() {
   const [contacts, setContacts] = useLocalStorage("contacts", contactsList);
   const [selectedContact, setSelectedContact] = useState('')
   const [newMessage, setNewMessage] = useState('')
+  const [messageReciever, setMessageReciever] = useState('')
   const [filter, setFilter] = useState('')
 
-  const idxOfSelectedContact = contacts.indexOf(contacts.find((contact)=>contact.name === selectedContact.name))
+  useEffect(() => {
+    setMessageReciever(selectedContact)
+  }, [newMessage])
 
   useEffect(() => {
-    if (selectedContact) {
+    if (messageReciever) {
 
+      const idxOfMessageReciever = contacts.indexOf(contacts.find((contact) => contact.name === messageReciever.name))
+      
       if (newMessage) {
-        selectedContact.history.push(newMessage)
+        let changedContacts = [...contacts]
+        changedContacts[idxOfMessageReciever].history.push(newMessage)
+
+        setContacts(changedContacts)
         setNewMessage('')
       }
-
-      let changedContacts = [...contacts]
-      changedContacts[idxOfSelectedContact] = selectedContact
-
-      setContacts(changedContacts)
     }
-  }, [selectedContact, newMessage])
+  }, [newMessage])
+
+  // useEffect(() => {
+  //   if (newMessage) {
+  //         messageReciever.history.push(newMessage)
+  //         setNewMessage('')
+  //     }
+  // })
 
   const onFilter = (event) => {
     setFilter(event.currentTarget.value)
@@ -54,10 +64,14 @@ function App() {
 
   return (
     <div className="container">
-      <ContactsSection contacts={filteredContacts()}
+      <ContactsSection contacts={filteredContacts().sort((a, b) => {
+            const aLastMessageTime = new Date(a.history[a.history.length - 1].date),
+                  bLastMessageTime = new Date(b.history[b.history.length - 1].date)
+            return bLastMessageTime - aLastMessageTime
+        })}
         filter={filter} findContact={onFilter} chooseContact={chooseInterlocutor}
          />
-      <ChatSection interlocutor={selectedContact} sendMessage={sendMessage}/>
+      <ChatSection interlocutor={selectedContact} sendMessage={sendMessage} setMessageReciever={setMessageReciever}/>
     </div>
   );
 }

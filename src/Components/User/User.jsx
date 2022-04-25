@@ -1,8 +1,10 @@
-
 import styles from './user.module.css'
+
 const User = () => {
     return (
-        <div className={styles.userIcon}>User</div>
+        <div className={styles.userContainer}>
+            <div className={styles.userIcon}><p>User</p></div>
+        </div>
     )
 }
 

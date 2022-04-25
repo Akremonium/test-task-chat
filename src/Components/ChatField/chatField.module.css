@@ -1,22 +1,65 @@
-.chatContainer {
-  list-style: none;
-  width: 300px;
-  height: 250px;
-  overflow: scroll;
+p {
+  margin: 0;
 }
 
-.interlocutorIcon {
-  width: 50px;
+.chatContainer {
+  list-style: none;
+  width: 100%;
+  height: 300px;
+  overflow: scroll;
+  padding: 0 10px;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .messageContainer {
   display: flex;
 }
 
-.dateTimeContainer {
-  display: flex;
+.interlocutorIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
-p {
-  margin: 0;
+.userMessageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.contactMessage {
+  background-color: rgb(54, 54, 54);
+  color: white;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+.userMessage {
+  height: 35px;
+  background-color: lightgrey;
+  color: rgb(61, 61, 61);
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.dateTimeContainer {
+  display: flex;
+  margin-left: 50px;
+  font-size: 12px;
+  color: grey;
+  margin-top: 5px;
+}
+
+.time {
+  margin-left: 10px;
 }

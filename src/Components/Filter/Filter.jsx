@@ -1,6 +1,8 @@
+import styles from './filter.module.css'
+
 const Filter = ({ filter, onChange }) => (
-    <form>
-        <input value={filter} onChange={onChange}></input>
+    <form className={styles.searchForm}>
+        <input value={filter} onChange={onChange} className={styles.searchInput} placeholder='Search or start new chat'></input>
     </form>
 )
 

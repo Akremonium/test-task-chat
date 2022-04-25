@@ -1,0 +1,10 @@
+.sectionContainer {
+  border-right: 1px solid grey;
+  height: 100%;
+  box-sizing: border-box;
+  width: 400px;
+}
+
+.userAndSearch {
+  background: lightgrey;
+}

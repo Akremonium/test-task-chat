@@ -5,7 +5,7 @@ const Interlocutor = ({ interlocutor }) => {
         return (
             <div className={styles.container}>
                 <img className={styles.interlocutorIcon} src={interlocutor.avatar} alt='Interlocutor avatar' />
-                <p>{interlocutor.name}</p>
+                <p className={styles.name}>{interlocutor.name}</p>
             </div>
         )
     }

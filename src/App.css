@@ -1,11 +1,11 @@
-body,
-html {
+body {
   margin: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .container {
-  /* padding: 25px; */
-  background-color: lightslategray;
   display: flex;
-  height: 100vh;
+  border-bottom: 1px solid grey;
+  box-sizing: border-box;
+  height: 430px;
 }
